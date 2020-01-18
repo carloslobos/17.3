@@ -5,11 +5,13 @@ process.stdin.on('readable', function() {
     if (input !== null) {
         var instruction = input.toString().trim();
         console.log('Your NODE.js version is: ' + process.version);
-        if (instruction === '/exit') {
-            process.stdout.write('Quitting app!\n');
-            process.exit();
-        } else {
-            process.stderr.write('Wrong instruction!\n');
+        switch (instruction) {
+            case '/exit':
+                process.stdout.write('Quitting APP!\n');
+                process.exit();
+                break;
+            default:
+                process.stderr.write('Wrong instruction!\n');
         }
     }
 });
